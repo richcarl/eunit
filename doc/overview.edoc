@@ -401,7 +401,7 @@ EUnit macros within `-ifdef(TEST)' or `-ifdef(EUNIT)' sections.
 
 == EUnit macros ==
 
-Although all the functionality of EUnit is avaliable even without the
+Although all the functionality of EUnit is available even without the
 use of preprocessor macros, the EUnit header file defines a number of
 such macros in order to make it as easy as possible to write unit tests
 as compactly as possible and without getting too many details in the

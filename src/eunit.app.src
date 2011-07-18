@@ -14,7 +14,8 @@
 	     eunit_striptests,
 	     eunit_surefire,
 	     eunit_test,
+	     eunit_tests,
 	     eunit_tty]},
   {registered,[]},
-  {applications, [stdlib]},
+  {applications, [kernel,stdlib]},
   {env, []}]}.

@@ -309,7 +309,7 @@
 		    case __C of
 			Class ->
 			    case __T of
-				Term ->  
+				Term ->
 				    .erlang:error({assertNotException_failed,
 						   [{module, ?MODULE},
 						    {line, ?LINE},
@@ -322,7 +322,7 @@
 						      .erlang:get_stacktrace()
 						     }}]});
 				_ -> ok
-			    end;		    
+			    end;
 			_ -> ok
 		    end
 	    end

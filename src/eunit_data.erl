@@ -672,7 +672,7 @@ get_directory_module_tests(D) ->
 		    false ->
 			Name1 = Name ++ ?DEFAULT_TESTMODULE_SUFFIX,
 			M1 = list_to_atom(Name1),
-			dict:erase(M1, S);			       
+			dict:erase(M1, S);
 		    true ->
 			S
 		end
