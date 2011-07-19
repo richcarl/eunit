@@ -14,7 +14,7 @@
 %% USA
 %%
 %% @private (for now)
-%% @author Richard Carlsson <richardc@it.uu.se>
+%% @author Richard Carlsson <carlsson.richard@gmail.com>
 %% @copyright 2006 Richard Carlsson
 %% @doc Erlang code monitoring service
 

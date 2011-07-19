@@ -18,7 +18,7 @@
 %% above, a recipient may use your version of this file under the terms of
 %% either the Apache License or the LGPL.
 %%
-%% @author Mickaël Rémond <mremond@process-one.net>
+%% @author Mickaël Rémond <mickael.remond@process-one.net>
 %% @copyright 2009 Mickaël Rémond, Paul Guyot
 %% @see eunit
 %% @doc Surefire reports for EUnit (Format used by Maven and Atlassian

@@ -1,7 +1,7 @@
 %% -------------------------------------------------------------------
 %% File: test.erl
 %%
-%% @author Richard Carlsson <richard@virtutech.com>
+%% @author Richard Carlsson <carlsson.richard@gmail.com>
 %% @copyright 2005 Richard Carlsson
 %% @private
 
