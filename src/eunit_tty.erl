@@ -18,8 +18,6 @@
 %% above, a recipient may use your version of this file under the terms of
 %% either the Apache License or the LGPL.
 %%
-%% $Id: eunit_tty.erl 346 2009-11-08 10:53:15Z rcarlsson $ 
-%%
 %% @author Richard Carlsson <richardc@it.uu.se>
 %% @copyright 2006-2009 Richard Carlsson
 %% @private

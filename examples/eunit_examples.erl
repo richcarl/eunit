@@ -1,8 +1,6 @@
 %% -------------------------------------------------------------------
 %% File: test.erl
 %%
-%% $Id: eunit_examples.erl 273 2008-11-06 09:17:08Z rcarlsson $ 
-%%
 %% @author Richard Carlsson <richard@virtutech.com>
 %% @copyright 2005 Richard Carlsson
 %% @private

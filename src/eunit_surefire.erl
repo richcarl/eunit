@@ -18,8 +18,6 @@
 %% above, a recipient may use your version of this file under the terms of
 %% either the Apache License or the LGPL.
 %%
-%% $Id: $
-%%
 %% @author Mickaël Rémond <mremond@process-one.net>
 %% @copyright 2009 Mickaël Rémond, Paul Guyot
 %% @see eunit

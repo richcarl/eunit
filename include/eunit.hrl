@@ -22,8 +22,6 @@
 %% never be considered a derived work under the the LGPL; these macros
 %% shall be regarded as "small" regardless of the exact line count.
 %%
-%% $Id: eunit.hrl 349 2010-02-20 11:33:25Z rcarlsson $
-%%
 %% Copyright (C) 2004-2006 Mickaël Rémond, Richard Carlsson
 
 

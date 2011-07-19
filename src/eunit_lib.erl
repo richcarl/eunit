@@ -18,8 +18,6 @@
 %% above, a recipient may use your version of this file under the terms of
 %% either the Apache License or the LGPL.
 %%
-%% $Id: eunit_lib.erl 346 2009-11-08 10:53:15Z rcarlsson $
-%%
 %% @copyright 2004-2007 Mickaël Rémond, Richard Carlsson
 %% @author Mickaël Rémond <mickael.remond@process-one.net>
 %%   [http://www.process-one.net/]

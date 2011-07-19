@@ -18,8 +18,6 @@
 %% above, a recipient may use your version of this file under the terms of
 %% either the Apache License or the LGPL.
 %%
-%% $Id: eunit_striptests.erl 346 2009-11-08 10:53:15Z rcarlsson $ 
-%%
 %% @author Richard Carlsson <richardc@it.uu.se>
 %% @author Eric Merritt <cyberlync@gmail.com>
 %% @copyright 2006 Richard Carlsson, Eric Merritt

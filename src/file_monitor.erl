@@ -13,8 +13,6 @@
 %% Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
 %% USA
 %%
-%% $Id: file_monitor.erl 311 2009-01-19 22:21:31Z rcarlsson $ 
-%%
 %% @author Richard Carlsson <richardc@it.uu.se>
 %% @copyright 2006-2009 Richard Carlsson
 %% @doc Erlang file monitoring service
