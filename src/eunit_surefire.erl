@@ -61,7 +61,7 @@
 	{
 	  name :: chars(),
 	  description :: chars(),
-	  result :: ok | {failed, tuple()} | {aborted, tuple()} | {skipped, tuple()},
+	  result :: ok | {failed, tuple()} | {aborted, tuple()} | {skipped, term()},
 	  time :: integer(),
 	  output :: binary()
 	 }).
@@ -296,7 +296,6 @@ write_testcase(
             output = Output},
         FileDescriptor) ->
     DescriptionAttr = case Description of
-			  <<>> -> [];
 			  [] -> [];
 			  _ -> [<<" description=\"">>, escape_attr(Description), <<"\"">>]
 		      end,
@@ -305,7 +304,6 @@ write_testcase(
         <<"\" name=\"">>, escape_attr(Name), <<"\"">>,
         DescriptionAttr],
     ContentAndEndTag = case {Result, Output} of
-        {ok, []} -> [<<"/>">>, ?NEWLINE];
         {ok, <<>>} -> [<<"/>">>, ?NEWLINE];
         _ -> [<<">">>, ?NEWLINE, format_testcase_result(Result), format_testcase_output(Output), ?INDENT, <<"</testcase>">>, ?NEWLINE]
     end,
@@ -354,7 +352,6 @@ format_testcase_result({skipped, Term}) ->
 %% Empty output is simply the empty string.
 %% Other output is inside a <system-out> xml tag.
 %% ----------------------------------------------------------------------------
-format_testcase_output([]) -> [];
 format_testcase_output(Output) ->
     [?INDENT, ?INDENT, <<"<system-out>">>, escape_text(Output), ?NEWLINE, ?INDENT, ?INDENT, <<"</system-out>">>, ?NEWLINE].
 
@@ -372,8 +369,6 @@ format_time_s([Digit1, Digit2, Digit3 | Tail]) -> [lists:reverse(Tail), $., Digi
 %% Escape a suite's name to generate the filename.
 %% Remark: we might overwrite another testsuite's file.
 %% ----------------------------------------------------------------------------
-escape_suitename([Head | _T] = List) when is_list(Head) ->
-    escape_suitename(lists:flatten(List));
 escape_suitename(Binary) when is_binary(Binary) ->
     escape_suitename(binary_to_list(Binary));
 escape_suitename("module '" ++ String) ->
@@ -381,7 +376,6 @@ escape_suitename("module '" ++ String) ->
 escape_suitename(String) ->
     escape_suitename(String, []).
 
-escape_suitename(Binary, Acc) when is_binary(Binary) -> escape_suitename(binary_to_list(Binary), Acc);
 escape_suitename([], Acc) -> lists:reverse(Acc);
 escape_suitename([$  | Tail], Acc) -> escape_suitename(Tail, [$_ | Acc]);
 escape_suitename([$' | Tail], Acc) -> escape_suitename(Tail, Acc);
