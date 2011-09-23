@@ -25,6 +25,8 @@
 
 -export([main/1]).    %% private
 
+-compile({no_auto_import,[monitor/2]}).
+-compile({no_auto_import,[demonitor/2]}).
 
 -define(SERVER, code_monitor).
 

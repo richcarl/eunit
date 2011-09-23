@@ -123,6 +123,9 @@
 -export([init/1, handle_call/3, handle_cast/2, handle_info/2,
 	 code_change/3, terminate/2]).
 
+-compile({no_auto_import,[monitor/2]}).
+-compile({no_auto_import,[demonitor/2]}).
+
 -include_lib("kernel/include/file.hrl").
 
 
@@ -515,12 +518,6 @@ flatten_onto(_, _) ->
 join_to_path(Path, File) when is_binary(Path), is_binary(File) ->
     normalize_path(filename:join(binary_to_list(Path),
 				 binary_to_list(File))).
-
-max(X, Y) when X > Y -> X;
-max(_, Y) -> Y.
-
-min(X, Y) when X < Y -> X;
-min(_, Y) -> Y.
 
 safe_interval(N) when is_integer(N) ->
     min(16#FFFFffff, max(N, ?MIN_INTERVAL));
