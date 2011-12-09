@@ -144,7 +144,7 @@ test(Tests, Options) ->
 %% @private
 %% @doc See {@link test/2}.
 test(Server, Tests, Options) ->
-    Listeners = [eunit_tty:start(Options) | listeners(Options)],
+    Listeners = default_listener(Options) ++ listeners(Options),
     Serial = eunit_serial:start(Listeners),
     case eunit_server:start_test(Server, Serial, Tests, Options) of
 	{ok, Reference} -> test_run(Reference, Listeners);
@@ -197,6 +197,10 @@ submit(T, Options) ->
 submit(Server, T, Options) ->
     Dummy = spawn(fun devnull/0),
     eunit_server:start_test(Server, Dummy, T, Options).
+
+default_listener(Options) ->
+    start_listeners([proplists:get_value(default_report, Options,
+                                        {eunit_tty, Options})]).
 
 listeners(Options) ->
     Ps = start_listeners(proplists:get_all_values(report, Options)),
