@@ -29,10 +29,16 @@
 -export([run_testfun/1, function_wrapper/2, enter_context/4,
 	 multi_setup/1]).
 
-
 -include("eunit.hrl").
 -include("eunit_internal.hrl").
 
+-atoms([eunit_data]). % stack traces
+-atoms([undef]). % errors
+
+-ifdef(TEST).
+-atoms([badarg, badarith, foo, eunit_nonexisting, nonexisting_test,
+        wrapper_test_exported_]).
+-endif.
 
 %% ---------------------------------------------------------------------
 %% Getting a cleaned up stack trace. (We don't want it to include
@@ -77,6 +83,7 @@ run_testfun(F) ->
 
 
 -ifdef(TEST).
+
 macro_test_() ->
     {"macro definitions",
      [{?LINE, fun () ->

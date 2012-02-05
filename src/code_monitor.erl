@@ -30,6 +30,13 @@
 
 -define(SERVER, code_monitor).
 
+-atoms([?SERVER]).
+-atoms([register_failed, no_server, failed]). % exit codes
+-atoms([monitor, demonitor, stop, code_server, module]). % server messages
+-atoms([loaded]). % events
+-atoms([code_call, load_file, ensure_loaded, load_abs, load_binary,
+        load_native_partial, load_native_sticky]). % code server wiretapping
+
 monitor(Pid) ->
     monitor(?SERVER, Pid).
 

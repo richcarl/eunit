@@ -128,6 +128,15 @@
 
 -include_lib("kernel/include/file.hrl").
 
+-atoms([interval, monitor]). % options
+-atoms([monitor, demonitor, automonitor, set_interval, get_interval,
+        stop, poll, enable_poll]). % file_monitor server messages
+-atoms([found, changed, added, deleted]). % events
+-atoms([not_owner, automonitor]). % file_monitor error values
+-atoms([directory, file]). % entry types
+-atoms([enoent, enotdir]). % posix error
+-atoms([badarg]). % exit codes
+-atoms([flush]). % erlang:demonitor/2
 
 %% NOTE: Monitored paths should be absolute, but this is not checked.
 %% 

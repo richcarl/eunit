@@ -31,6 +31,8 @@
 
 -export([parse_transform/2]).
 
+-atoms([export, function, attribute]). % abstract forms
+
 parse_transform(Forms, Options) ->
     TestSuffix = proplists:get_value(eunit_test_suffix, Options,
 				     ?DEFAULT_TEST_SUFFIX),

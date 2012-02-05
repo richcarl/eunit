@@ -38,6 +38,20 @@
 
 -define(TICKS_PER_SECOND, 1000).
 
+-atoms([none]).  % iter_next/1
+-atoms([data]).  % parse/1
+-atoms([arity]). % erlang:fun_info/2
+-atoms([enoent, enotdir]).  % errors
+-atoms([directory, regular]). % #file_info
+-atoms([modules]). % .app file
+-atoms([exports, module_info]). % module_info/1 metacall
+-atoms([non_existing]). % code:where_is_file/1
+-atoms([undef]). % exceptions
+
+-ifdef(TEST).
+-atoms([ping, eunit, generator_exported_, eunit_lib, count]).
+-endif.
+
 %% @type tests() =
 %%            SimpleTest
 %%          | [tests()]

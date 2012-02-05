@@ -34,6 +34,12 @@
 -include("eunit.hrl").
 -include("eunit_internal.hrl").
 
+-atoms([watch, path, regexp, done, command, auto_test,
+        code_monitor, loaded, forget]).  % server messages
+-atoms([stopped, unknown_command]).  % replies
+-atoms([empty, value]).  % queue:out/1
+-atoms([anchored]).  % re:compile/2
+-atoms([match, capture, none]). % re:run/3
 
 -define(AUTO_TIMEOUT, 60000).   %% auto test time limit
 

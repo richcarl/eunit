@@ -34,6 +34,8 @@
 
 -export([behaviour_info/1]).
 
+-atoms([callbacks, init, handle_begin, handle_end, handle_cancel,
+        terminate]).
 
 behaviour_info(callbacks) ->
     [{init,1},{handle_begin,3},{handle_end,3},{handle_cancel,3},

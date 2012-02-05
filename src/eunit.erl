@@ -39,6 +39,10 @@
 	 watch_regexp/1, watch_regexp/2, watch_regexp/3, watch_app/1,
 	 watch_app/2, watch_app/3]).
 
+-atoms([eunit_tty]). % default listeners
+-atoms([write]). % file:open/2
+-atoms([dot]). % scanner tokens
+
 %% EUnit entry points
 
 %% TODO: Command line interface similar to that of edoc?

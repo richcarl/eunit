@@ -36,6 +36,15 @@
 
 -record(procstate, {ref, id, super, insulator, parent, order}).
 
+-atoms([local, remote]).  % tasks
+-atoms([child, eunit_abort, abort]).  % insulators
+-atoms([io_request, io_reply, put_chars, get_chars, get_line, get_until,
+        eof, getopts, setopts, get_geometry, columns, rows, enotsup,
+        requests, request]).  % group leader I/O messages
+-atoms([flush]). % erlang:demonitor/2
+-atoms([none]). % eunit_data:iter_next/2
+-atoms([group_leader_process]). % metacall
+-atoms([priority, normal, low]). % process_flag/2
 
 %% Spawns test process and returns the process Pid; sends {done,
 %% Reference, Pid} to caller when finished. See the function

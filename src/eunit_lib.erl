@@ -37,6 +37,16 @@
 	 split_node/1, consult_file/1, list_dir/1, format_exit_term/1,
 	 format_exception/1, format_exception/2, format_error/1]).
 
+-atoms([erlang]). % module name
+-atoms([module, name, type, local, external, arity]). % erlang:fun_info/2
+-atoms([cd, env, stream, exit_status, use_stdio, stderr_to_stdout, in,
+        eof, data, exit_status]). % open_port/2
+-atoms([unix, win32]). % os:type/0
+-atoms([value, none]). % gb_trees:lookup/2
+
+-ifdef(TEST).
+-atoms([any, a, b, c, fun_parent_test, function_clause]).
+-endif.
 
 %% Type definitions for describing exceptions
 %%

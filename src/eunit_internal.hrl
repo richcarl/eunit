@@ -59,3 +59,17 @@
 -record(context, {setup = undefined,
 		  cleanup = undefined,
 		  process = local}).    % spawn new process for body
+
+-atoms([verbose, report, no_tty, event_log, enqueue, eunit_test_suffix,
+        eunit_generator_suffix, eunit_export_suffix]). % options
+-atoms([no, prefix, exact]). % trie matching
+-atoms(['begin', 'end', progress, group]). % serialization
+-atoms([start, done, result, group, test, id, size, pass, fail, skip,
+        cancel, skipped, abort, aborted, failed, blame, startup,
+        desc, order, time, source, line, output, reason]). % listeners
+-atoms([bad_test, context_error, no_such_function, module_not_found,
+        cleanup_failed, instantiation_failed, setup_failed,
+        generator_failed, application_not_found, file_read_error,
+        server_down, no_server]). % errors
+-atoms([?SERVER, ?DEFAULT_MODULE_WRAPPER_NAME, eunit_internal
+       ]). % internals

@@ -30,6 +30,8 @@
 
 -export([parse_transform/2]).
 
+-atoms([export, function, attribute, module, atom, clause, call, remote,
+        record_field, '', eunit]). % abstract forms
 
 parse_transform(Forms, Options) ->
     TestSuffix = proplists:get_value(eunit_test_suffix, Options,

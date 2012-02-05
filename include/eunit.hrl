@@ -425,4 +425,40 @@
 -endif.
 
 
+%% atoms used in test representations
+-atoms([module, application, file, dir, generator, with, local, spawn,
+        local, remote, timeout, inorder, inparallel, setup, node, foreach,
+        foreachx]).
+
+%% atoms used in various macros
+-atoms([assertCmd_failed,
+        assertCmdOutput_failed,
+        assertEqual_failed,
+        assertException_failed,
+        assertMatch_failed,
+        assertNotEqual_failed,
+        assertNotException_failed,
+        assertNotMatch_failed,
+        assertion_failed,
+        command,
+        command_failed,
+        current_function,
+        eunit_proc,
+        expected,
+        expected_output,
+        expected_status,
+        expression,
+        line,
+        module,
+        not_a_boolean,
+        output,
+        pattern,
+        status,
+        unexpected_exception,
+        unexpected_success,
+        user,
+        value,
+        wall_clock]).
+
+
 -endif. % EUNIT_HRL

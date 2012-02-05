@@ -41,6 +41,9 @@
 		indent = 0
 	       }).
 
+-atoms([module_not_found, no_such_function]).
+
+
 start() ->
     start([]).
 

@@ -42,6 +42,8 @@
 -export([init/1, handle_begin/3, handle_end/3, handle_cancel/3,
 	 terminate/2]).
 
+-atoms([write, raw]). % file:open/2
+
 %% ============================================================================
 %% MACROS
 %% ============================================================================
@@ -289,7 +291,7 @@ write_start_tag(
 %% ----------------------------------------------------------------------------
 %% Recursive function to write the test cases.
 %% ----------------------------------------------------------------------------
-write_testcases([], _FileDescriptor) -> void;
+write_testcases([], _FileDescriptor) -> ok;
 write_testcases([TestCase| Tail], FileDescriptor) ->
     write_testcase(TestCase, FileDescriptor),
     write_testcases(Tail, FileDescriptor).

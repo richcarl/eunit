@@ -27,6 +27,15 @@
 -define(SERVER, file_monitor).
 -define(MSGTAG, ?SERVER).
 
+-atoms([?SERVER]). % the server name
+-atoms([interval, monitor]). % file_monitor options
+-atoms([found, changed, added, deleted]). % file_monitor return values
+-atoms([unix]). % os:type()
+-atoms([directory, regular]). % file_info.type
+-atoms([enoent, enotdir]). % posix error
+-atoms([could_not_make_dir, could_not_delete, could_not_write,
+        unexpected_message]). % exit codes
+
 %% Basic tests: these start and stop the server for each test
 basic_test_() ->
     case os:type() of

@@ -20,6 +20,16 @@
 
 -module(autoload).
 
+-atoms([load]). % options
+-atoms([watch, dir, file, module]). % server commands
+-atoms([file_monitor, code_monitor, command, stop]). % server events
+-atoms([found, changed, loaded, added]). % return values
+-atoms([no_server, failed]). % exit codes
+-atoms([autoload_unexpected, autoload_unexpected_file_event,
+       autoload_unexpected_code_event, autoload_loading]). % debug
+-atoms([non_existing]). % code:which/1
+-atoms([value]). % lists:keysearch/1
+
 -export([start/0, start/1, stop/0, stop/1,
 	 watch_module/1, watch_module/2, watch_module/3,
 	 watch_file/1, watch_file/2, watch_file/3,
