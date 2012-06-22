@@ -367,8 +367,7 @@
 
         lists:foreach(
             fun ({Key, _}) ->
-                case length([H || {K, _}=H <- List -- PureSublist, Key == K,
-                    not lists:member(H, PureSublist)]) of
+                case length([H || {K, _}=H <- List -- PureSublist, Key == K]) of
                     0 ->
                         erlang:error({assertSublist_failed, [
                             {module, ?MODULE},
