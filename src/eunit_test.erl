@@ -249,7 +249,67 @@ macro_test_() ->
 				  {error,badarith,_}}]},
 			 _}}
 		     = run_testfun(F)
- 	     end)
+	     end),
+
+      ?_test(begin %% Sublists, successful.
+        lists:foreach(fun ({Sublist, List}) ->
+                {?LINE, F} = ?_assertSublist(Sublist, List),
+                {ok, ok} = run_testfun(F)
+            end, [
+                {[], []},
+                {[], [1]},
+                {[1, 2], [3, 1, 2]},
+                {[a, b], [b, c, a]},
+                {"china", "machine"},
+                {[a, a], [a, a]}
+        ])
+        end),
+
+      ?_test(begin %% Sublists, failing.
+        lists:foreach(fun ({Sublist, List}) ->
+                {?LINE, F} = ?_assertSublist(Sublist, List),
+                {error, {error, {assertSublist_failed, [
+                    {module, _},
+                    {line, _},
+                    {sublist, Sublist},
+                    {list, List}]},
+                 _}} = run_testfun(F)
+            end, [
+                {[1], []},
+                {[a, b, c], [b, a]},
+                {[a, a], [a]}
+        ])
+        end),
+
+      ?_test(begin %% Wildcard sublists, succesful.
+        lists:foreach(fun ({Sublist, List}) ->
+                {?LINE, F} = ?_assertSublist(Sublist, List),
+                {ok, ok} = run_testfun(F)
+            end, [
+                {[{a, '_'}], [{a, 1}]},
+                {[{a, '_'}, {b, 3}], [{b, 3}, {a, 1}]},
+                {[{a, '_'}, {b, 3}], [a, 1, {b, 3}, {a, 1}]},
+                {[{a, 3}, {a, '_'}], [{a, 5}, {a, 3}]}
+        ])
+        end),
+
+      ?_test(begin %% Wildcard sublist, failing.
+        lists:foreach(fun ({Sublist, List}) ->
+                {?LINE, F} = ?_assertSublist(Sublist, List),
+                {error, {error, {assertSublist_failed, [
+                    {module, _},
+                    {line, _},
+                    {sublist, _},
+                    {list, _} | _ % this is either [] or {key, _}
+                    ]},
+                 _}} = run_testfun(F)
+            end, [
+                {[{a, '_'}], [{b, 3}]},
+                {[{a, '_'}], [3, {b, 3}, {c, 2}]},
+                {[{a, 1}, {a, '_'}], [{a, 2}]},
+                {[{a, 2}, {a, '_'}], [{a, 2}]}
+        ])
+        end)
      ]}.
 -endif.
 
