@@ -509,13 +509,26 @@ handle_test(T, St) ->
 
 run_test(#test{f = F}) ->
     try eunit_test:run_testfun(F) of
-	{ok, _Value} ->
-	    %% just discard the return value
+	{ok, Value} ->
+	    %% just check and discard the return value
+            warn_if_test_like(Value),
 	    ok;
 	{error, Exception} ->
 	    {error, Exception}
     catch
 	throw:WrapperError -> {skipped, WrapperError}
+    end.
+
+%% TODO: this should be sent back up via the protocol, not just printed
+warn_if_test_like(Value) ->
+    case eunit_lib:is_test_like(Value) of
+        true ->
+            io:format(user,
+                      "warning: test returned ~P - "
+                      "did you mean to write a test generator?\n",
+                      [Value,5]);
+        false ->
+            ok
     end.
 
 set_group_order(#group{order = undefined}, St) ->

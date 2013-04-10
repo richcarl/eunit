@@ -36,7 +36,7 @@
 	 command/2, command/3, trie_new/0, trie_store/2, trie_match/2,
 	 split_node/1, consult_file/1, list_dir/1, format_exit_term/1,
 	 format_exception/1, format_exception/2, format_error/1,
-         is_not_test/1]).
+         is_not_test/1, is_test_like/1]).
 
 
 %% Type definitions for describing exceptions
@@ -233,6 +233,42 @@ is_not_test(T) ->
         X when is_reference(X) -> true;
         _ -> false
     end.
+
+%% ---------------------------------------------------------------------
+%% detect return values that are probably test representations
+
+is_test_like([H|_]) -> is_test_like(H);
+is_test_like({L,F}) when is_integer(L), is_function(F,0) -> true;
+is_test_like(T) when is_tuple(T) ->
+    case tuple_to_list(T) of
+        [X|Xs]=Xs0 ->
+            case is_string(X) of
+                true -> is_test_like_tuple(Xs);
+                false -> is_test_like_tuple(Xs0)
+            end;
+        [] ->
+            false
+    end;
+is_test_like(F) when is_function(F,0) -> true;
+is_test_like(_) -> false.
+
+is_test_like_tuple([module, M]) -> is_atom(M);
+is_test_like_tuple([application, A | _]) -> is_atom(A);
+is_test_like_tuple([generator, F]) -> is_function(F,0);
+is_test_like_tuple([generator, M, F]) -> is_atom(M) andalso is_atom(F);
+is_test_like_tuple([spawn, T]) -> is_test_like(T);
+is_test_like_tuple([spawn, N, T]) when is_atom(N) -> is_test_like(T);
+is_test_like_tuple([timeout, N, T]) when is_number(N) -> is_test_like(T);
+is_test_like_tuple([inorder, T]) -> is_test_like(T);
+is_test_like_tuple([inparallel, T]) -> is_test_like(T);
+is_test_like_tuple([with, _, F]) -> is_function(F,1);
+is_test_like_tuple([X, local | Xs]) -> is_test_like_tuple([X|Xs]);
+is_test_like_tuple([X, spawn | Xs]) -> is_test_like_tuple([X|Xs]);
+is_test_like_tuple([X, {spawn,_} | Xs]) -> is_test_like_tuple([X|Xs]);
+is_test_like_tuple([setup, S | _]) -> is_function(S);
+is_test_like_tuple([foreach, S | _]) -> is_function(S);
+is_test_like_tuple([foreachx, S | _]) -> is_function(S);
+is_test_like_tuple(_) -> false.
 
 %% ---------------------------------------------------------------------
 %% Deep list iterator; accepts improper lists/sublists, and also accepts
