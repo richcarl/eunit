@@ -205,7 +205,8 @@ server_command(From, stop, St) ->
     server(St#state{stopped = true});
 server_command(From, {watch, Target, _Opts}, St) ->
     %% the code watcher is only started on demand
-    code_monitor:monitor(self()),
+    %% FIXME: this is disabled for now in the OTP distribution
+    %%code_monitor:monitor(self()),
     %% TODO: propagate options to testing stage
     St1 = add_watch(Target, St),
     server_command_reply(From, ok),
