@@ -235,7 +235,7 @@ insulator_wait(Child, Parent, Buf, St) ->
 	    message_super(Id, {progress, 'begin', {Type, Data}}, St),
 	    insulator_wait(Child, Parent, [[] | Buf], St);
 	{child, Child, Id, {'end', Status, Time}} ->
-	    Data = [{time, Time}, {output, buffer_to_binary(hd(Buf))}],
+	    Data = [{time, Time}, {output, lists:reverse(hd(Buf))}],
 	    message_super(Id, {progress, 'end', {Status, Data}}, St),
 	    insulator_wait(Child, Parent, tl(Buf), St);
 	{child, Child, Id, {skipped, Reason}} ->
@@ -276,9 +276,6 @@ insulator_wait(Child, Parent, Buf, St) ->
 kill_task(Child, St) ->
     exit(Child, kill),
     terminate_insulator(St).
-
-buffer_to_binary([B]) when is_binary(B) -> B;  % avoid unnecessary copying
-buffer_to_binary(Buf) -> list_to_binary(lists:reverse(Buf)).
 
 %% Unlinking before exit avoids polluting the parent process with exit
 %% signals from the insulator. The child process is already dead here.
@@ -602,7 +599,7 @@ group_leader_loop(Runner, Wait, Buf) ->
 	    %% no more messages and nothing to wait for; we ought to
 	    %% have collected all immediately pending output now
 	    process_flag(priority, normal),
-	    Runner ! {self(), buffer_to_binary(Buf)}
+	    Runner ! {self(), lists:reverse(Buf)}
     end.
 
 group_leader_sync(G) ->
