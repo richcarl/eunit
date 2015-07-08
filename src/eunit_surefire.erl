@@ -1,4 +1,3 @@
-%% -*- coding: latin-1 -*-
 %% Licensed under the Apache License, Version 2.0 (the "License"); you may
 %% not use this file except in compliance with the License. You may obtain
 %% a copy of the License at <http://www.apache.org/licenses/LICENSE-2.0>
@@ -19,8 +18,8 @@
 %% above, a recipient may use your version of this file under the terms of
 %% either the Apache License or the LGPL.
 %%
-%% @author Mickaël Rémond <mickael.remond@process-one.net>
-%% @copyright 2009 Mickaël Rémond, Paul Guyot
+%% @author MickaÃ«l RÃ©mond <mickael.remond@process-one.net>
+%% @copyright 2009 MickaÃ«l RÃ©mond, Paul Guyot
 %% @see eunit
 %% @doc Surefire reports for EUnit (Format used by Maven and Atlassian
 %% Bamboo for example to integrate test results). Based on initial code

@@ -1,4 +1,3 @@
-%% -*- coding: latin-1 -*-
 %% Licensed under the Apache License, Version 2.0 (the "License"); you may
 %% not use this file except in compliance with the License. You may obtain
 %% a copy of the License at <http://www.apache.org/licenses/LICENSE-2.0>
@@ -23,7 +22,7 @@
 %% never be considered a derived work under the the LGPL; these macros
 %% shall be regarded as "small" regardless of the exact line count.
 %%
-%% Copyright (C) 2004-2006 Mickaël Rémond, Richard Carlsson
+%% Copyright (C) 2004-2006 MickaÃ«l RÃ©mond, Richard Carlsson
 
 
 -ifndef(EUNIT_HRL).
