@@ -600,6 +600,18 @@ Examples:
 ```?assertExit(normal, exit(normal))'''
 ```?assertException(throw, {not_found,_}, throw({not_found,42}))'''
 </dd>
+<dt>`assertNotException(ClassPattern, TermPattern, Expr)'</dt>
+<dd>
+Evaluates `Expr', catching any exception and testing that it
+<strong>not</strong> matches the `ClassPattern:TermPattern'.  If it match, an
+informative exception will be generated.  If no exception is thrown by `Expr'
+the test passes.  This is the inverse case of `assertException', for
+convenience.
+
+Examples:
+```?assertNotException(error, badarith, X/1)'''
+```?assertNotException(_, _, some_noexcept_fun())'''
+</dd>
 </dl>
 
 === Macros for running external commands ===
