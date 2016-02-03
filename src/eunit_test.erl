@@ -45,6 +45,7 @@ get_stacktrace() ->
 get_stacktrace(Ts) ->
     eunit_lib:uniq(prune_trace(erlang:get_stacktrace(), Ts)).
 
+-dialyzer({no_match, prune_trace/2}).
 prune_trace([{eunit_data, _, _} | Rest], Tail) ->
     prune_trace(Rest, Tail);
 prune_trace([{eunit_data, _, _, _} | Rest], Tail) ->
@@ -80,6 +81,7 @@ run_testfun(F) ->
 
 
 -ifdef(TEST).
+-dialyzer({[no_match, no_fail_call, no_return], macro_test_/0}).
 macro_test_() ->
     {"macro definitions",
      [{?LINE, fun () ->
@@ -306,6 +308,7 @@ wrapper_test_() ->
      ]}.
 
 %% this must be exported (done automatically by the autoexport transform)
+-dialyzer({no_missing_calls, wrapper_test_exported_/0}).
 wrapper_test_exported_() ->
     {ok, ?MODULE:nonexisting_function()}.
 -endif.

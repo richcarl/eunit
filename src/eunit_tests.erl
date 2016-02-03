@@ -28,6 +28,8 @@
 
 -include("eunit.hrl").
 
+-dialyzer(no_match).
+
 -ifdef(TEST).
 id(X) -> X.  % for suppressing compiler warnings
 -endif.
