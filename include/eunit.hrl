@@ -223,6 +223,7 @@
 -define(debugHere, ok).
 -define(debugFmt(S, As), ok).
 -define(debugVal(E), (E)).
+-define(debugValAll(E), (E)).
 -define(debugTime(S, E), (E)).
 -else.
 -define(debugMsg(S),
@@ -237,6 +238,13 @@
 	begin
 	((fun (__V) ->
 		  ?debugFmt(<<"~ts = ~tP">>, [(??E), __V, 15]),
+		  __V
+	  end)(E))
+	end).
+-define(debugValAll(E),
+	begin
+	((fun (__V) ->
+		  ?debugFmt(<<"~ts = ~tp">>, [(??E), __V]),
 		  __V
 	  end)(E))
 	end).
