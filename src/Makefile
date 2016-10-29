@@ -8,7 +8,7 @@ INCLUDE=../include
 APP_TARGET=$(EBIN)/eunit.app
 APPUP_TARGET=$(EBIN)/eunit.appup
 
-ERL_COMPILE_FLAGS += -I$(INCLUDE) +warn_unused_vars +nowarn_shadow_vars +warn_unused_import
+ERL_COMPILE_FLAGS += -I$(INCLUDE) +nowarn_shadow_vars +warn_unused_import
 
 SOURCES= \
 	eunit_autoexport.erl \
