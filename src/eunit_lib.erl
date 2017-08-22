@@ -384,14 +384,15 @@ fun_parent(F) ->
 	    {arity, A} = erlang:fun_info(F, arity),
 	    {M, N, A};
 	{type, local} ->
-            [$-|S] = atom_to_list(N),
-            [S2, T] = string:split(S, "/", trailing),
-            {M, list_to_atom(S2), element(1, string:to_integer(T))}
+	    [$-|S] = atom_to_list(N),
+            [Func, Rest] = string:split(S, "/"),
+            [FuncArg,_] = string:split(Rest, "-"),
+	    {M, list_to_atom(Func), list_to_integer(FuncArg)}
     end.
 
 -ifdef(TEST).
 fun_parent_test() ->
-    {?MODULE,fun_parent_test,0} = fun_parent(fun () -> ok end).
+    {?MODULE,fun_parent_test,0} = fun_parent(fun (A) -> {ok,A} end).
 -endif.
 
 %% ---------------------------------------------------------------------
