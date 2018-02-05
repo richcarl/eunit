@@ -26,7 +26,7 @@
 -define(DEFAULT_EXPORT_SUFFIX, "_exported_").
 -define(DEFAULT_TESTMODULE_SUFFIX, "_tests").
 -define(DEFAULT_GROUP_TIMEOUT, infinity).
--define(DEFAULT_TEST_TIMEOUT, 5000).
+-define(DEFAULT_TEST_TIMEOUT, infinity).
 -define(DEFAULT_SETUP_PROCESS, spawn).
 -define(DEFAULT_MODULE_WRAPPER_NAME, eunit_wrapper_).
 
