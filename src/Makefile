@@ -6,9 +6,8 @@ EBIN=../ebin
 INCLUDE=../include
 
 APP_TARGET=$(EBIN)/eunit.app
-APPUP_TARGET=$(EBIN)/eunit.appup
 
-ERL_COMPILE_FLAGS += -I$(INCLUDE) +nowarn_shadow_vars +warn_unused_import -Werror
+ERL_COMPILE_FLAGS += -I$(INCLUDE) +warn_deprecated_catch +nowarn_shadow_vars +warn_unused_import -Werror
 
 SOURCES= \
 	eunit_autoexport.erl \
@@ -25,7 +24,7 @@ SOURCES= \
 	eunit_surefire.erl \
 	eunit_tests.erl
 
-OBJECTS=$(SOURCES:%.erl=$(EBIN)/%.$(EMULATOR)) $(APP_TARGET) $(APPUP_TARGET)
+OBJECTS=$(SOURCES:%.erl=$(EBIN)/%.$(EMULATOR)) $(APP_TARGET)
 
 all: $(OBJECTS)
 
@@ -39,7 +38,4 @@ $(EBIN)/%.$(EMULATOR):%.erl
 	erlc -pa $(EBIN) -W $(ERL_COMPILE_FLAGS) -o$(EBIN) $<
 
 $(APP_TARGET): eunit.app.src ../vsn.mk
-	sed -e 's;%VSN%;$(EUNIT_VSN);' $< > $@
-
-$(APPUP_TARGET): eunit.appup.src ../vsn.mk
 	sed -e 's;%VSN%;$(EUNIT_VSN);' $< > $@
